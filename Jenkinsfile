@@ -13,7 +13,18 @@ pipeline {
                 '''
             }
         }
-        // stage('push') {
+        stage('push to nexus') {
+            steps {
+                echo 'pushing to nexus...'    
+            }
+         }
+        stage('build docker image') {
+            steps {
+                echo 'creating docker image...'
+                sh 'docker build -t wordsmithweb . '
+            }
+         }
+        // stage('push docker image to dockerHub') {
         //     steps {
         //         echo 'Running push...'
         //         sh 'docker tag jenkinsimage toxicmoel/jenkinsimage:${BUILD_ID}'
@@ -21,7 +32,7 @@ pipeline {
         //         sh 'docker push toxicmoel/jenkinsimage:${BUILD_ID} '
                 
         //     }
-        // }
+        //  }
         // stage('Deploy') {
         //     steps {
         //         echo 'Deploying the application...'
