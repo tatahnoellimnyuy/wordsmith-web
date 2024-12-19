@@ -30,7 +30,7 @@ pipeline {
                 echo 'Running push...'
                 sh 'docker tag wordsmithweb toxicmoel/wordsmithweb:${BUILD_ID}'
                 sh 'docker login -u="toxicmoel" -p="Jesuisroot123@"'
-                sh 'docker push toxicmoel/jenkinsimage:${BUILD_ID} '
+                sh 'docker push toxicmoel/wordsmithweb:${BUILD_ID} '
                 
             }
          }
