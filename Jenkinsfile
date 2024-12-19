@@ -7,7 +7,8 @@ pipeline {
                 echo 'Building the application artfact ...'
                 // Example build command
                 sh '''
-                    rm -rf wordsmith go.mod
+                    rm -f wordsmith 
+                    rm -f go.mod
                     go mod init wordsmith
                     go mod tidy
                     go build
