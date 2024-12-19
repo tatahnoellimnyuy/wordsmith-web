@@ -7,8 +7,7 @@ pipeline {
                 echo 'Building the application artfact ...'
                 // Example build command
                 sh '''
-                    rm -f wordsmith 
-                    rm -f go.mod
+                    
                     go mod init wordsmith
                     go mod tidy
                     go build
@@ -44,4 +43,21 @@ pipeline {
         //     }
         // }
     }
+  post {
+        always {
+            echo "Cleaning up workspace and temporary files..."
+            
+            // Delete the workspace to remove files from the agent
+            cleanWs()
+
+        }
+
+        success {
+            echo "Build completed successfully. Performing success-specific actions..."
+        }
+
+        failure {
+            echo "Build failed. Performing failure-specific cleanup actions..."
+        }
+    }  
 }
