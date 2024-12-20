@@ -4,6 +4,7 @@ pipeline {
     stages {
          stage('scan files') {
             steps {
+                withCredentials([string(credentialsId: 'sonarqube-id', variable: 'login')]) {
                 echo 'scanning  ...'
                 // Example build command
                 sh '''
@@ -11,8 +12,9 @@ pipeline {
                       -Dsonar.projectKey=go-analysis \
                       -Dsonar.sources=. \
                       -Dsonar.host.url=http://34.201.44.26:9000 \
-                      -Dsonar.login=sqp_e1092f3a7dea41f800e42f1cc3fa506874dc2354
+                      -Dsonar.login=$login
                 '''
+            }
             }
         }
         stage('Build artifact') {
