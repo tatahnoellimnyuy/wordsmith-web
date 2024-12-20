@@ -40,11 +40,13 @@ pipeline {
          }
         stage('push docker image to dockerHub') {
             steps {
+                withCredentials([usernamePassword(credentialsId: 'docker-hub', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
                 echo 'Running push...'
                 sh 'docker tag wordsmithweb toxicmoel/wordsmithweb:${BUILD_ID}'
-                sh 'docker login -u="toxicmoel" -p="Jesuisroot123@"'
+                sh 'docker login -u="$USERNAME" -p="$PASSWORD"'
                 sh 'docker push toxicmoel/wordsmithweb:${BUILD_ID} '
                 
+            }
             }
          }
         stage('Deploy') {
