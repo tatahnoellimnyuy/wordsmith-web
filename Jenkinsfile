@@ -7,7 +7,7 @@ pipeline {
                 echo 'scanning  ...'
                 // Example build command
                 sh '''
-                   sudo sonar-scanner \
+                   /opt/sonar-scanner/bin/sonar-scanner \
                       -Dsonar.projectKey=go-analysis \
                       -Dsonar.sources=. \
                       -Dsonar.host.url=http://34.201.44.26:9000 \
