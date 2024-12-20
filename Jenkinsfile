@@ -2,6 +2,19 @@
 pipeline {
     agent any
     stages {
+         stage('scan files') {
+            steps {
+                echo 'scanning  ...'
+                // Example build command
+                sh '''
+                   sonar-scanner \
+                      -Dsonar.projectKey=go-analysis \
+                      -Dsonar.sources=. \
+                      -Dsonar.host.url=http://34.201.44.26:9000 \
+                      -Dsonar.login=sqp_e1092f3a7dea41f800e42f1cc3fa506874dc2354
+                '''
+            }
+        }
         stage('Build artifact') {
             steps {
                 echo 'Building the application artfact ...'
