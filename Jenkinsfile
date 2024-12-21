@@ -31,7 +31,15 @@ pipeline {
         }
         stage('push to nexus') {
             steps {
-                echo 'pushing to nexus...'    
+                 withCredentials([usernamePassword(credentialsId: 'nexus', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
+                echo 'pushing artifact  ...'
+                // Example build command
+                sh '''
+                   curl -u '$USERNAME:$PASSWORD' \
+                     --upload-file ./wordsmith \
+                         http://54.161.93.194:8081/repository/go-binaries/wordsmith-web-1.0.0
+                '''
+            }   
             }
          }
         stage('build docker image') {
