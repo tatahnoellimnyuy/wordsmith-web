@@ -9,10 +9,10 @@ pipeline {
                 // Example build command ghhghg
                 sh '''
                    /opt/sonar-scanner/bin/sonar-scanner \
-                      -Dsonar.projectKey=go-analysis \
+                      -Dsonar.projectKey=sonaranalysis \
                       -Dsonar.sources=. \
-                      -Dsonar.host.url=http://34.201.44.26:9000 \
-                      -Dsonar.login=$login
+                      -Dsonar.host.url=http://52.21.159.135:9000 \
+                      -Dsonar.login=sqp_0076b9c863f8e946a40c474f24ef544b96d04458
                 '''
             }
             }
