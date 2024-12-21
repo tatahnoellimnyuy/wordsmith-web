@@ -6,7 +6,7 @@ pipeline {
             steps {
                 withCredentials([string(credentialsId: 'sonarqube-id', variable: 'login')]) {
                 echo 'scanning  ...'
-                // Example build command
+                // Example build command ghhghg
                 sh '''
                    /opt/sonar-scanner/bin/sonar-scanner \
                       -Dsonar.projectKey=go-analysis \
