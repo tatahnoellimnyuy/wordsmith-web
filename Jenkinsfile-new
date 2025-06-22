@@ -5,7 +5,12 @@ pipeline {
             steps {
                 echo 'Building the application...'
                 // Example build command
-                //sh './build.sh'
+                sh '''
+                    
+                    go mod init wordsmith
+                    go mod tidy
+                    go build
+                '''
             }
         }
     }
